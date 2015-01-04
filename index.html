@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Patternlock : A browser based pattern lock plugin">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Patternlock</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/pagoenka/patternlock">View on GitHub</a>
+
+          <h1 id="project_title">Patternlock</h1>
+          <h2 id="project_tagline">A browser based pattern lock plugin</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/pagoenka/patternlock/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/pagoenka/patternlock/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="pattern-lock" class="anchor" href="#pattern-lock" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pattern Lock.</h3>
+
+<p>Pattern Lock plugin is similar to pattern based locks available in Android and other mobile OS. It lets you emulate similar pattern lock in browser environment.
+Its highly configurable and works in desktop as well mobile OS browser (supports touch based gesture).
+You may use it in hybrid mobile app using lib like Cordova/Phonegap also you may use in desktop application for authentication purpose along with other authentication.</p>
+
+<h4>
+<a id="how-to-use-pattern-lock" class="anchor" href="#how-to-use-pattern-lock" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use Pattern Lock</h4>
+
+<p>Include jquery, patternLock javascript &amp; pattern lock cssfile inside your html file.</p>
+
+<pre><code>&lt;link rel="stylesheet" href="css/patternLock.css" /&gt;
+&lt;script type="text/javascript" src="js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/jquery.patternlock.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3>
+<a id="simple-use" class="anchor" href="#simple-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Use</h3>
+
+<pre><code>&lt;div id="mypatternlock"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt; 
+    (document).ready(function(){
+        $('#mypatternlock').patternLock();
+    });
+&lt;/script
+</code></pre>
+
+<h3>
+<a id="options-available" class="anchor" href="#options-available" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options available</h3>
+
+<p>You can use following options like shown below:</p>
+
+<pre><code>$(selector).patternLock({ optionName: value });
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Options</th>
+<th>Default Value</th>
+<th>type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rows</td>
+<td>3</td>
+<td>number</td>
+<td>number of rows for lock holes</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>3</td>
+<td>number</td>
+<td>number of columns for lock holes</td>
+</tr>
+<tr>
+<td>width</td>
+<td>250</td>
+<td>number</td>
+<td>width in pixels</td>
+</tr>
+<tr>
+<td>height</td>
+<td>250</td>
+<td>number</td>
+<td>height in pixels</td>
+</tr>
+<tr>
+<td>showPatternLine</td>
+<td>true</td>
+<td>boolean</td>
+<td>show or hide pattern line</td>
+</tr>
+<tr>
+<td>patternLineColor</td>
+<td>#000000</td>
+<td>string</td>
+<td>color of pattern line</td>
+</tr>
+<tr>
+<td>lineWidth</td>
+<td>4</td>
+<td>number</td>
+<td>width of pattern line</td>
+</tr>
+<tr>
+<td>selectionColor</td>
+<td>#0000ff</td>
+<td>string</td>
+<td>color to be used as a highlight color of pattern hole</td>
+</tr>
+<tr>
+<td>fieldName</td>
+<td>''</td>
+<td>string</td>
+<td>hidden input field name in which drawn pattern value will be available so that it can be used inside form to submit to the server</td>
+</tr>
+<tr>
+<td>valueSeparator</td>
+<td>,</td>
+<td>string</td>
+<td>string that will be used inside pattern to separate values like 1,2,3,4</td>
+</tr>
+<tr>
+<td>valueArray</td>
+<td>[]</td>
+<td>array</td>
+<td>Yes. You can give your own values to each pattern hole. It will be assigned in a sequence from left to right and top to bottom. Make sure array lenght should be equal to rows * columns otherwise it will be skipped. If you don't give your own values then 1,2,3,...n values will be assigned to each hole. Where n = rows * columns</td>
+</tr>
+<tr>
+<td>centerCircle</td>
+<td>false</td>
+<td>boolean</td>
+<td>it will show or hide circles inside holes</td>
+</tr>
+<tr>
+<td>centerCircleSize</td>
+<td>20</td>
+<td>number</td>
+<td>size of center circles in pixels</td>
+</tr>
+<tr>
+<td>drawEnd</td>
+<td>null</td>
+<td>function</td>
+<td>callback function that will be called after pattern drawing is done and will be receive drawn pattern as argument</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>500</td>
+<td>number (milliseconds)</td>
+<td>duration in milliseconds, to show drawn pattern for</td>
+</tr>
+<tr>
+<td>allowRepeatSelection</td>
+<td>false</td>
+<td>boolean</td>
+<td>option to set whether or not allow repeated selection of lock holes.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>Bharat Patik (<a href="https://github.com/bharatpatil" class="user-mention">@bharatpatil</a>) and Pratik Goenka (<a href="https://github.com/pagoenka" class="user-mention">@pagoenka</a>)</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Patternlock maintained by <a href="https://github.com/pagoenka">pagoenka</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
