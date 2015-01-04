@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Example - jQuery patternLock</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/patternLock.css">
+	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.patternlock.min.js"></script>
+	<style type="text/css">
+	
+	.patternlock {
+		background: url("example-assets/pattern.png");
+	}
+	.patternlock .tbl td {
+		background: #fff url("example-assets/pattern1.png");
+	}	
+	.patternlock .tbl td:hover {
+	 	background: #fff url("example-assets/pattern.png");   
+	}
+
+	.patternlock .tbl td.selected {
+	 	background: #fff url("example-assets/pattern2.png") !important;   
+	}	
+
+	.patternlock .tbl td.selected .centerCircle {
+	 	background: #f00 !important;   
+	}
+	.patternlock .centerCircle {
+		background-color: black;
+		border: none;
+	}
+	
+	</style>
+</head>
+<body>
+<div id="patternCSSClasses"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#patternCSSClasses').patternLock({
+			centerCircle: true
+		});
+	});
+</script>
+</body>
+</html>

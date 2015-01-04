@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Example - jQuery patternLock</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/patternLock.css">
+	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.patternlock.min.js"></script>
+</head>
+<body>
+<form>
+	<div id="patternForm"></div>
+	<input type="submit"/>		
+</form>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#patternForm').patternLock({
+			fieldName: 'generatedPattern'
+		});
+	});
+</script>
+</body>
+</html>

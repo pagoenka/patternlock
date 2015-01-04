@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Example - jQuery patternLock</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/patternLock.css">
+	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.patternlock.min.js"></script>
+</head>
+<body>
+<div id="patternLineEx"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#patternLineEx').patternLock({
+			lineWidth: 10,
+			patternLineColor: '#ff0000',
+			showPatternLine: true
+		});
+	});
+</script>
+</body>
+</html>

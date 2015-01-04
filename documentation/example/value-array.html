@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Example - jQuery patternLock</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/patternLock.css">
+	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.patternlock.min.js"></script>
+</head>
+<body>
+<div id="patternArrayValue"></div>
+<h3>Drawn value is: </h3>
+<div id="generatedPattern"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#patternArrayValue').patternLock({
+			valueArray: ['a', 'b', 'c', 'x', 'y', 'z', 'l', 'm', 'n'],
+			drawEnd: function(value) {
+				$('#generatedPattern').text(value);
+			}
+		});
+	});
+</script>
+</body>
+</html>

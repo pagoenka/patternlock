@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Example - jQuery patternLock</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/patternLock.css">
+	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.patternlock.min.js"></script>
+</head>
+<body>
+<input type="button" value="Destroy" id="destroyPatternLock" />
+<input type="button" value="Create" id="createPatternLock" />
+<br><br>
+<div id="patternDe"></div>
+<script type="text/javascript">
+	function createPatternLock() {
+		$('#patternDe').patternLock();
+	}
+	function destroyPatternLock() {
+		$('#patternDe').patternLock('destroy');
+	}	
+	$(document).ready(function(){
+		createPatternLock();
+
+		$('#destroyPatternLock').click(function(){
+			destroyPatternLock();
+		});
+
+		$('#createPatternLock').click(function(){
+			createPatternLock();
+		});		
+	});
+</script>
+</body>
+</html>

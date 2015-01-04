@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Example - jQuery patternLock</title>
+	<link rel="stylesheet" type="text/css" href="../patternLock.css">
+	<script type="text/javascript" src="example-assets/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../jquery.patternlock.min.js"></script>
+</head>
+<body>
+<div id="patternValueSeparator"></div>
+<h3>Drawn value is: </h3>
+<div id="patternValueSep"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#patternValueSeparator').patternLock({
+			valueSeparator: '|',
+			drawEnd: function(value) {
+				$('#patternValueSep').text(value);
+			}
+		});
+	});
+</script>
+</body>
+</html>

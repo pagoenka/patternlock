@@ -1,0 +1,640 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>jQuery patternLock plugin</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+	<link rel="stylesheet" type="text/css" href="assets/css/patternLock.css">
+	<script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.patternlock.min.js"></script>	
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;jQuery patternLock&rdquo; Documentation by &ldquo;Bharat Patil&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;jQuery patternLock&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 29/10/2014<br>
+					By: Bharat Patil<br>
+					Email: <a href="mailto:sun.bharat.patil@gmail.com">sun.bharat.patil@gmail.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#gettingStarted">Getting Started</a></li>
+			<li><a href="#basicExampleWithId">Basic Example - with id selector</a></li>
+			<li><a href="#basicExampleWithClass">Basic Example - with class selector</a></li>
+			<li><a href="#centerCircles">Example with center circles</a></li>
+			<li><a href="#patternLine">Show or hide pattern line and change color of pattern line</a></li>
+			<li><a href="#highlightColor">Change pattern hole highlight color</a></li>
+			<li><a href="#rowsAndCols">Number of rows and columns</a></li>
+			<li><a href="#heightAndWidth">Width and Height of pattern lock</a></li>
+			<li><a href="#callbackFunc">drawEnd() callback function</a></li>
+			<li><a href="#valueSeparator">pattern value separator</a></li>
+			<li><a href="#valueArray">valueArray option</a></li>
+			<li><a href="#allowRepeatSelection">Enable/Disable repeated selection of pattern hole</a></li>
+			<li><a href="#timeout">Pattern selection timeout</a></li>
+			<li><a href="#destroy">Destroy pattern lock</a></li>
+			<li><a href="#forms">How to use patternLock inside a &lt;form&gt;&lt;/form&gt;</a></li>
+			<li><a href="#cssClasses">How to modify CSS to personalize patterLock</a></li>			
+		</ol>
+		
+		<hr>
+		
+		<h3 id="gettingStarted"><strong>A) Getting Started</strong> - <a href="#toc">top</a></h3>
+		<p>Before you can start using patternLock you have to include the css and the js files inside the <b>&lt;head&gt;&lt;/head&gt;</b> section of your webpage:</p>
+<pre>	
+&lt;link  href="patterLock.css" type="text/css" &gt; 
+&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.patternlock.js"&gt;&lt;/script&gt;
+</pre>
+		<img src="assets/images/gettingStarted.jpg" alt="Getting Started">
+		<hr>
+
+		<h3 id="basicExampleWithId"><strong>B) Basic Example - with id selector</strong> - <a href="#toc">top</a></h3>
+
+		<p>Once above files are included you can use patternLock like below</p> 
+
+<pre>
+&lt;div id=&quot;pattern&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#pattern').patternLock();
+	});
+&lt;/script&gt;	
+</pre>
+
+		<!-- <img src="assets/images/basic-example.png" alt="Basic Example using ID"> -->
+
+		<p><b>Output</b></p>
+		<div id="pattern"></div>
+		<br>
+		<hr>
+
+		<h3 id="basicExampleWithClass"><strong>B) Basic Example - with class selector</strong> - <a href="#toc">top</a></h3>
+
+		<p>You can even use jquery class selector to create pattern lock</p> 
+
+<pre>
+&lt;div class=&quot;pattern&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('.pattern').patternLock();
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div class="pattern"></div>
+		<br>
+		<hr>
+
+		<h3 id="centerCircles"><strong>D) Example with center circles</strong> - <a href="#toc">top</a></h3>
+
+		<p>You can choose to show center circles as well as you can change size of it</p> 
+
+<pre>
+&lt;div id=&quot;patternCircles&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternCircles').patternLock({
+			centerCircle: true,
+			centerCircleSize: 20
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div id="patternCircles"></div>
+		<br>
+		<hr>
+<!---- START ------>		
+		<h3 id="patternLine"><strong>E) Show or hide pattern line and change color of pattern line</strong> - <a href="#toc">top</a></h3>
+
+		<p>You can choose to hide pattern line. Also you can change color or width of line. Pattern line is by default visible.</p> 
+		<p>Visible Pattern Line</p>
+<pre>
+&lt;div id=&quot;patternLineEx&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternLineEx').patternLock({
+			lineWidth: 10,
+			patternLineColor: '#ff0000',
+			showPatternLine: true
+		});
+	});
+&lt;/script&gt;	
+</pre>
+<p>Hidden Pattern Line</p>
+<pre>
+&lt;div id=&quot;patternLineEx&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternLineEx').patternLock({
+			showPatternLine: false
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<table>
+		<tr><td>Visible Pattern Line</td><td>Hidden Pattern Line</td></tr>
+		<tr><td>
+			<div id="patternLineEx"></div>	
+		</td><td>
+			<div id="patternLineExV"></div>
+		</td></tr></table>
+		
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="highlightColor"><strong>F) Change pattern hole highlight color</strong> - <a href="#toc">top</a></h3>
+
+		<p>To set background color of selected pattern hole, you can use 'selectionColor' option. It accepts css color value. If you don't want to highlight then pass 'transparent' as value.</p> 
+<pre>
+&lt;div id=&quot;patternHighlightColor&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternHighlightColor').patternLock({
+			selectionColor: '#ff0000'
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div id="patternHighlightColor"></div>
+		<br>
+		<hr>
+<!---- END ------>				
+
+<!---- START ------>		
+		<h3 id="rowsAndCols"><strong>G) Number of rows and columns</strong> - <a href="#toc">top</a></h3>
+
+		<p>With these options you can set your own number of rows and columns. By default 3 rows and 3 columns will be created.</p> 
+<pre>
+&lt;div id=&quot;patternRowsColumns&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternRowsColumns').patternLock({
+			rows: 4,
+			columns: 4
+
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div id="patternRowsColumns"></div>
+		<br>
+		<hr>
+<!---- END ------>				
+
+<!---- START ------>		
+		<h3 id="heightAndWidth"><strong>H) Width and Height of pattern lock</strong> - <a href="#toc">top</a></h3>
+
+		<p>These options allow you to specify width and height of pattern lock. By default 250px is the width and height of pattern lock.<br>
+		For best result it's adviced to keep same width and height of pattern lock.</p> 
+<pre>
+&lt;div id=&quot;patternWidthHeight&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternWidthHeight').patternLock({
+			width: 300,
+			height: 300
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div id="patternWidthHeight"></div>
+		<br>
+		<hr>
+<!---- END ------>	
+
+<!---- START ------>		
+		<h3 id="callbackFunc"><strong>I) drawEnd() callback function</strong> - <a href="#toc">top</a></h3>
+
+		<p>To get value of drawn pattern, you can use this callback function. It will return value as a string joined with <a href="#valueSeparator">'valueSeparator'</a>. </p> 
+<pre>
+&lt;div id=&quot;patternDrawEnd&quot;&gt;&lt;/div&gt;
+&lt;h3&gt;Drawn value is: &lt;/h3&gt;
+&lt;div id=&quot;patternDrawEndValue&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternDrawEnd').patternLock({
+			drawEnd: function(value) {
+				$('#patternDrawEndValue').text(value);
+			}
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div id="patternDrawEnd"></div>
+		<h3>Drawn value is: </h3>		
+		<div id="patternDrawEndValue"></div>
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="valueSeparator"><strong>J) pattern value separator</strong> - <a href="#toc">top</a></h3>
+
+		<p>This allows you to specify value separator for pattern value. In above example you can see returned pattern value. They are by default separated by commas. If you want something else to separate those values, you can use this option to sepcify it. And if you don't want any separator, then simply set this option as empty string.</p> 
+<pre>
+&lt;div id=&quot;patternValueSeparator&quot;&gt;&lt;/div&gt;
+&lt;h3&gt;Drawn value is: &lt;/h3&gt;
+&lt;div id=&quot;patternValueSep&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternValueSeparator').patternLock({
+			valueSeparator: '|',
+			drawEnd: function(value) {
+				$('#patternValueSep').text(value);
+			}
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div id="patternValueSeparator"></div>
+		<h3>Drawn value is: </h3>
+		<div id="patternValueSep"></div>
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="valueArray"><strong>K) valueArray option</strong> - <a href="#toc">top</a></h3>
+
+		<p>This option allows you to specify your own set of values that can be assigned to each pattern hole. Values will be assigned in a direction of left to right and top to bottom. Default values are
+		<br>
+		1 - 2 - 3<br>
+		4 - 5 - 6<br>
+		7 - 8 - 9<br>
+		This is because pattern lock by default is of 3 rows and 3 columns, and it is result of number of rows into number of columns i.e. number of rows multiply by number of columns i.e. 9.
+
+		If you specify array whose length doesn't match with number of rows multiply by number of columns then this option will be neglated and default values will be assigned.
+		</p> 
+<pre>
+&lt;div id=&quot;patternArrayValue&quot;&gt;&lt;/div&gt;
+&lt;h3&gt;Drawn value is: &lt;/h3&gt;
+&lt;div id=&quot;generatedPattern&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternArrayValue').patternLock({
+			valueArray: ['a', 'b', 'c', 'x', 'y', 'z', 'l', 'm', 'n'],
+			drawEnd: function(value) {
+				$('#generatedPattern').text(value);
+			}
+		});
+	});
+&lt;/script&gt;	
+</pre>
+
+		<p><b>Output</b></p>
+		<div id="patternArrayValue"></div>
+		<h3>Drawn value is: </h3>
+		<div id="generatedPattern"></div>
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="allowRepeatSelection"><strong>L) Enable/Disable repeated selection of pattern hole</strong> - <a href="#toc">top</a></h3>
+
+		<p>You can enable or disable repeated selection of pattern holes. By default if you have selected a pattern hole already and try to re-select it, it is not allowed. With this option set to true, you can enable it.
+		</p> 
+<pre>
+&lt;div id=&quot;patternRepeatedSelection&quot;&gt;&lt;/div&gt;
+&lt;h3&gt;Drawn value is: &lt;/h3&gt;
+&lt;div id=&quot;generatedPatternS&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternRepeatedSelection').patternLock({
+			allowRepeatSelection: true,
+			drawEnd: function(value) {
+				$('#generatedPatternS').text(value);
+			}
+		});
+	});
+&lt;/script&gt;	
+</pre>	
+		<p><b>Output</b><br>
+Note: Try selecting 1,2,3,2 and see the below generated pattern
+		</p>
+		<table> <tr><td>
+			With repeated selection enabled <br>
+			<div id="patternRepeatedSelection"></div>
+			<h3>Drawn value is: </h3>
+			<div id="generatedPatternS"></div>					
+		</td><td>
+			With repeated selection disabled <br>
+			<div id="patternRepeatedSelection1"></div>
+			<h3>Drawn value is: </h3>
+			<div id="generatedPatternS1"></div>			
+		</td></tr></table>
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="timeout"><strong>M) Pattern selection timeout</strong> - <a href="#toc">top</a></h3>
+
+		<p>Once you choose a pattern, whatever is drawn is shown for a particular time. For what time drawn pattern should be visible, that can be specified with this option in milliseconds. Default value if 500 which means half second.
+		</p> 
+<pre>
+&lt;div id=&quot;patternTimeout&quot;&gt;&lt;/div&gt;
+&lt;h3&gt;Drawn value is: &lt;/h3&gt;
+&lt;div id=&quot;generatedPatternT&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternTimeout').patternLock({
+			timeout: 4000,
+			drawEnd: function(value) {
+				$('#generatedPatternT').text(value);
+			}
+		});
+	});
+&lt;/script&gt;	
+</pre>	
+		<p><b>Output</b></p>
+		<div id="patternTimeout"></div>
+		<h3>Drawn value is: </h3>
+		<div id="generatedPatternT"></div>
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="destroy"><strong>N) Destroy pattern lock</strong> - <a href="#toc">top</a></h3>
+
+		<p>You can inialize of destroy pattern lock. This is particularly useful in single page application to avoid memory leaks. When you call this method, it will remove any data associated with element and also unbinds events thus freeing memory.
+		</p> 
+<pre>
+&lt;input type=&quot;button&quot; value=&quot;Destroy&quot; id=&quot;destroyPatternLock&quot; /&gt;
+&lt;input type=&quot;button&quot; value=&quot;Create&quot; id=&quot;createPatternLock&quot; /&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;div id=&quot;patternDe&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	function createPatternLock() {
+		$('#patternDe').patternLock();
+	}
+	function destroyPatternLock() {
+		$('#patternDe').patternLock('destroy');
+	}	
+	$(document).ready(function(){
+		createPatternLock();
+
+		$('#destroyPatternLock').click(function(){
+			destroyPatternLock();
+		});
+
+		$('#createPatternLock').click(function(){
+			createPatternLock();
+		});		
+	});
+&lt;/script&gt;	
+</pre>	
+		<p><b>Output</b></p>
+		<input type="button" value="Destroy" id="destroyPatternLock" />
+		<input type="button" value="Create" id="createPatternLock" />
+		<br><br>		
+		<div id="patternDe"></div>
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="forms"><strong>O) How to use patternLock inside a &lt;form&gt;&lt;/form&gt;</strong> - <a href="#toc">top</a></h3>
+
+		<p>It is very easy to use pattern lock inside form elements. Just put your pattern selector inside <b>&lt;form&gt;&lt;/form&gt;</b> element and specify 'fieldName' option with the name that you want. And a hidden field will be generated automatically with that name.
+		</p> 
+<pre>
+&lt;form&gt;
+	&lt;div id=&quot;patternForm&quot;&gt;&lt;/div&gt;
+	&lt;input type=&quot;submit&quot;/&gt;		
+&lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternForm').patternLock({
+			fieldName: 'generatedPattern'
+		});
+	});
+&lt;/script&gt;	
+</pre>	
+		<p><b>Output</b></p>
+		<form>
+			<div id="patternForm"></div>
+			<input type="submit"/>		
+		</form>
+		<br>
+		<hr>
+<!---- END ------>
+
+<!---- START ------>		
+		<h3 id="cssClasses"><strong>P) How to modify CSS to personalize patterLock</strong> - <a href="#toc">top</a></h3>
+
+		<p> jQuery patternLock is highliy customizable. You can customize look and feel the way you want. To do this you need to know which are main CSS classes to be modified to customize patternLock. Also you can find these classes in given <a href="../patternLock.css" target="_blank">css</a> file, though you need not to directly modify this file.
+
+		<br>Please refer following diagram: 
+		</p> 
+		<img src="assets/images/PatternLock-CSS-Class-Schematic-arrowed.png" alt="jQuery patternLock CSS Class " />
+		<p>Let's understand the CSS classes from bottom to top:</p>
+		<ul>
+			<li>
+				<b>.patternLock</b> - This is the class of outermost wrapper of plugin. You can override this class to add background-image or background-color to entire rounded square etc.
+			</li>
+			<li>
+				<b>.patternLock .tbl td</b> - &lt;td&gt; is an html element used to draw pattern holes. Similar to above you can use this class to add background images or colors or to remove border radius, shadows etc.
+			</li>
+			<li>
+				<b>.patternLock .tbl td.selected</b> - Whenever user drags across pattern holes to draw a pattern, internally script adds "selected" class to each selected pattern hole and removes it automatically after given <a href="#timeout">timeout</a>.
+			</li>
+			<li>
+				<b>.patternLock .centerCircle</b> - In image above you can see small concentric yellow circles. This is the class of those circles. These circles are inside &lt;td&gt;
+			</li>
+			<li>
+				<b>.patternLock .tbl td.selected .centerCircle</b> - Similar to ".patternLock .tbl td.selected", as user drags to draw a pattern, you can use this CSS hierarchy to modify css for centerCircles as holes getting selected. 
+			</li>
+		</ul>
+
+		<b>Example:</b>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;title&gt;Basic Example - jQuery patternLock&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;patternLock.css&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.11.1.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.patternlock.min.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	
+	.patternlock {
+		background: url(&quot;pattern.png&quot;);
+	}
+	.patternlock .tbl td {
+		background: #fff url(&quot;pattern1.png&quot;);
+	}	
+	.patternlock .tbl td:hover {
+	 	background: #fff url(&quot;pattern.png&quot;);   
+	}
+
+	.patternlock .tbl td.selected {
+	 	background: #fff url(&quot;pattern2.png&quot;) !important;   
+	}	
+
+	.patternlock .tbl td.selected .centerCircle {
+	 	background: #f00 !important;   
+	}
+	.patternlock .centerCircle {
+		background-color: black;
+		border: none;
+	}
+	
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;patternCSSClasses&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		$('#patternCSSClasses').patternLock({
+			centerCircle: true
+		});
+	});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;	
+</pre>
+<br>
+<b>Output</b>
+		<br>
+<iframe src="example/css-example-1.html" width="300px" height="300px" style="width:300px;height:300px;border:none;"></iframe>
+<p>Note: You can find above example inside example directory with filename 'css-example-1.html'</p>
+		<hr>
+<!---- END ------>
+		<p class="append-bottom alt large"><strong>Bharat Patil</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+<script type="text/javascript">
+$(function(){
+	$('#pattern, .pattern').patternLock();
+	$('#patternCircles').patternLock({
+		centerCircle: true,
+		centerCircleSize: 20
+	});
+	$('#patternLineEx').patternLock({
+		lineWidth: 10,
+		patternLineColor: '#ff0000',
+		showPatternLine: true
+	});
+	$('#patternLineExV').patternLock({
+		showPatternLine: false
+	});	
+	$('#patternHighlightColor').patternLock({
+		selectionColor: '#ff0000'
+	});
+	$('#patternRowsColumns').patternLock({
+		rows: 4,
+		columns: 4
+	});
+	$('#patternWidthHeight').patternLock({
+		width: 300,
+		height: 300
+	});
+	$('#patternDrawEnd').patternLock({
+		drawEnd: function(value) {
+			$('#patternDrawEndValue').text(value);
+		}
+	});	
+
+	$('#patternValueSeparator').patternLock({
+		valueSeparator: '|',
+		drawEnd: function(value) {
+			$('#patternValueSep').text(value);
+		}
+	});	
+
+	$('#patternArrayValue').patternLock({
+		valueArray: ['a', 'b', 'c', 'x', 'y', 'z', 'l', 'm', 'n'],
+		drawEnd: function(value) {
+			$('#generatedPattern').text(value);
+		}
+	});	
+
+	$('#patternRepeatedSelection').patternLock({
+		allowRepeatSelection: true,
+		drawEnd: function(value) {
+			$('#generatedPatternS').text(value);
+		}
+	});
+	$('#patternRepeatedSelection1').patternLock({
+		allowRepeatSelection: false,
+		drawEnd: function(value) {
+			$('#generatedPatternS1').text(value);
+		}
+	});
+	$('#patternTimeout').patternLock({
+		timeout: 4000,
+		drawEnd: function(value) {
+			$('#generatedPatternT').text(value);
+		}
+	});	
+	$('#patternForm').patternLock({
+		fieldName: 'generatedPattern'
+	});	
+
+	createPatternLock();
+
+	$('#destroyPatternLock').click(function(){
+		destroyPatternLock();
+	});
+
+	$('#createPatternLock').click(function(){
+		createPatternLock();
+	});	
+});
+
+function createPatternLock() {
+	$('#patternDe').patternLock();
+}
+function destroyPatternLock() {
+	$('#patternDe').patternLock('destroy');
+}	
+
+</script>
+
+</html>

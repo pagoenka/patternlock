@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Example - jQuery patternLock</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/patternLock.css">
+	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.patternlock.min.js"></script>
+</head>
+<body>
+<div id="patternRepeatedSelection"></div>
+<h3>Drawn value is: </h3>
+<div id="generatedPatternS"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#patternRepeatedSelection').patternLock({
+			allowRepeatSelection: true,
+			drawEnd: function(value) {
+				$('#generatedPatternS').text(value);
+			}
+		});
+	});
+</script>
+</body>
+</html>
